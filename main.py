@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-# from apps.calculator.route import router as calculator_router
+from apps.mathNotes.route import router as calculator_router
 from constants import SERVER_URL, PORT, ENV
 
 @asynccontextmanager
@@ -23,9 +23,9 @@ app.add_middleware(
 
 @app.get('/')
 async def health():
-    return {"message": "Server is running"}
+    return {'message' : 'Server is running'}
 
-# app.include_router(calculator_router, prefix="/calculate", tags=["calculate"])
+app.include_router(calculator_router, prefix='/calculate', tags=['calculate'])
 
 
 if __name__ == "__main__":
